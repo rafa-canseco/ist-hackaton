@@ -100,6 +100,31 @@ it("should retrieve all recommendations of a specific category", async function 
     expect(recommendation.categoryId).to.equal(1);
   }
 });
+
+it("should emit a RecommendationProposed event when a recommendation is proposed", async function () {
+  const proposeTx = await recommendationContract.propose(
+    1,// categoria
+    "123 main st", //ubication
+    true,//CardAccepted
+    true,// cryptoAccepted
+    true, //openwifi,
+    true, // niceBathroom
+    "nice place with a great view", //details
+    5 //ratingOverall
+  );
+
+  await expect(proposeTx)
+    .to.emit(recommendationContract, "RecommendationProposed")
+    .withArgs(
+      1, 
+      deployer.address,
+      "123 main st", 
+      "nice place with a great view"
+    ); // Asegúrate de que los argumentos coincidan con los que esperas
+});
+
+
+
   
 });
  
