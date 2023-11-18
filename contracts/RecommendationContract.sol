@@ -2,6 +2,11 @@
 pragma solidity 0.8.19;
 
 contract RecommendationContract {
+
+    event RecommendationProposed(uint256 indexed categoryId,address proposer, string ubication,string details);
+    event Voted(uint256 indexed recommendationId,address voter, bool vote);
+
+
     struct Recommendation {
         uint256 categoryId; // 1 restaurantes // 2 cowork // 3 atracciones turisiticas
         address proposer;
@@ -48,6 +53,7 @@ contract RecommendationContract {
             agree: 0,
             disagree: 0
         }));
+        emit RecommendationProposed(_categoryId, msg.sender, _ubication, _details);
         }
 
         function vote(uint256 _recommendationId, uint256 _vote) public {
@@ -68,6 +74,8 @@ contract RecommendationContract {
             recommendation.score = uint256(recommendation.agree) - uint256(recommendation.disagree);
 
             hasVoted[_recommendationId][msg.sender] = true;
+
+            emit Voted(_recommendationId,msg.sender,_vote == 1);
         }
 
         function getRecommendationCount() public view returns (uint256) {
