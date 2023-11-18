@@ -123,6 +123,20 @@ it("should emit a RecommendationProposed event when a recommendation is proposed
     ); // Asegúrate de que los argumentos coincidan con los que esperas
 });
 
+it("should emit a Voted event when a vote is cast", async function () {
+  // Asumimos que ya hay una recomendación existente; si no, debes crear una primero
+  await recommendationContract.propose(2, "Ubication", true, false, true, true, "Details", 4);
+  
+  // addr1 vota "agree" en la recomendación con ID 0
+  await expect(recommendationContract.connect(addr1).vote(0, 1))
+    .to.emit(recommendationContract, "Voted")
+    .withArgs(0, addr1.address, true);
+
+  // addr2 vota "disagree" en la misma recomendación
+  await expect(recommendationContract.connect(addr2).vote(0, 2))
+    .to.emit(recommendationContract, "Voted")
+    .withArgs(0, addr2.address, false);
+});
 
 
   
