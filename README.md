@@ -42,41 +42,47 @@ function propose(
     bool _niceBathroom,
     string memory _details,
     uint256 _ratingOverall
-) publicz```
+) publicz
+```
 
 Allows a user to propose a new recommendation.
 
 ## vote
 ```
 function vote(uint256 _recommendationId, uint256 _vote) public
-Allows a user to vote on an existing recommendation.```
+Allows a user to vote on an existing recommendation.
+```
 
-##getRecommendation
+## getRecommendation
 ```
 function getRecommendation(uint256 _recommendationId) public view returns (Recommendation memory)
-Retrieves the details of a recommendation by its ID.```
+Retrieves the details of a recommendation by its ID.
+```
 
 ## getRecommendationsByCategory
 
 ```
 function getRecommendationsByCategory(uint256 _categoryId) public view returns (uint256[] memory)
-Returns an array of recommendation IDs that belong to a specific category.```
+Returns an array of recommendation IDs that belong to a specific category.
+```
 
 ## getUserScore
 ```
 function getUserScore(address _user) public view returns (int256)
-Queries a user's score based on the votes of their recommendations.```
+Queries a user's score based on the votes of their recommendations.
+```
 
 ## Development Environment
 ```
-To compile and deploy the contract, you'll need Hardhat.```
+To compile and deploy the contract, you'll need Hardhat.
+```
 
 ## Testing
 ```
-Contract tests are written using Chai and are run with Hardhat.```
+Contract tests are written using Chai and are run with Hardhat.
+```
 
 ## Deployment
-```
 Include instructions on how to deploy the contract to an Ethereum network.
 
 
