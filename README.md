@@ -1,5 +1,11 @@
 # Recommendation Contract
 
+## Address on testnet of Scroll:
+
+## 0xC181BAd0421EA319152057D6d9d98860910B6ed9
+
+https://sepolia.scrollscan.com/address/0xC181BAd0421EA319152057D6d9d98860910B6ed9
+
 ## Description
 The `RecommendationContract` is an Smart contract build for Scroll L2 that allows users to create recommendations for places across three different categories: restaurants, coworking spaces, and tourist attractions. Each recommendation can receive votes affecting the score of the recommended place.
 
@@ -36,7 +42,7 @@ function propose(
     bool _niceBathroom,
     string memory _details,
     uint256 _ratingOverall
-) public```
+) publicz```
 
 Allows a user to propose a new recommendation.
 
